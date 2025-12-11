@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coopvest Africa - Loan Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
+
+        .illustration-container {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 40%, #0A2342 60%, #0D3A5C 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated gradient waves background */
+        .illustration-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 160, 23, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 160, 23, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Main content wrapper */
+        .illustration-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1400px;
+            position: relative;
+            z-index: 2;
+            gap: 60px;
+        }
+
+        /* Left section - Loan process icons */
+        .left-process {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: flex-start;
+        }
+
+        .process-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .process-item:nth-child(1) { animation-delay: 0.1s; }
+        .process-item:nth-child(2) { animation-delay: 0.3s; }
+        .process-item:nth-child(3) { animation-delay: 0.5s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .process-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.2) 0%, rgba(212, 160, 23, 0.08) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            border: 2px solid rgba(212, 160, 23, 0.3);
+            box-shadow: 0 8px 24px rgba(212, 160, 23, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .process-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translate(-100%, -100%) rotate(45deg);
+            }
+            100% {
+                transform: translate(100%, 100%) rotate(45deg);
+            }
+        }
+
+        .process-item:hover .process-icon {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(212, 160, 23, 0.2);
+        }
+
+        .process-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .process-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #0A2342;
+            letter-spacing: 0.3px;
+        }
+
+        .process-text p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Center section - Professional with desktop */
+        .center-professional {
+            flex: 1.2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .professional-card {
+            position: relative;
+            width: 320px;
+            height: 380px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(10, 35, 66, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border: 1px solid rgba(212, 160, 23, 0.1);
+        }
+
+        .professional-image {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #0A2342 0%, #0D3A5C 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(10, 35, 66, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .professional-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 4s infinite;
+        }
+
+        .professional-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0A2342;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .professional-info p {
+            font-size: 13px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-preview {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.1) 0%, rgba(10, 35, 66, 0.05) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 12px;
+            border: 1px solid rgba(212, 160, 23, 0.2);
+            font-size: 11px;
+            color: #0A2342;
+            font-weight: 600;
+        }
+
+        .dashboard-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dashboard-value {
+            font-size: 14px;
+            font-weight: 700;
+            color: #D4A017;
+        }
+
+        /* Desktop monitor mockup */
+        .monitor-mockup {
+            position: absolute;
+            right: -140px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 420px;
+            height: 280px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(10, 35, 66, 0.25);
+            border: 10px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            animation: slideInRight 0.8s ease-out;
+            position: relative;
+        }
+
+        .monitor-mockup::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 16px;
+            background: #2a2a2a;
+            border-radius: 0 0 12px 12px;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px) translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(-50%);
+            }
+        }
+
+        .monitor-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0A2342 0%, #0D3A5C 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loan-header {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .loan-amount {
+            font-size: 36px;
+            font-weight: 700;
+            color: #D4A017;
+            margin-bottom: 20px;
+        }
+
+        .approval-badge {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+            margin-bottom: 15px;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .approval-text {
+            font-size: 14px;
+            font-weight: 700;
+            color: #22c55e;
+            letter-spacing: 1px;
+        }
+
+        /* Right section - Disbursement benefits */
+        .right-benefits {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: flex-end;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            flex-direction: row-reverse;
+        }
+
+        .benefit-item:nth-child(1) { animation-delay: 0.2s; }
+        .benefit-item:nth-child(2) { animation-delay: 0.4s; }
+        .benefit-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.2) 0%, rgba(212, 160, 23, 0.05) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border: 2px solid rgba(212, 160, 23, 0.3);
+            box-shadow: 0 6px 20px rgba(212, 160, 23, 0.12);
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            text-align: right;
+        }
+
+        .benefit-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #0A2342;
+        }
+
+        .benefit-text p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(212, 160, 23, 0.18);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .illustration-container {
+                height: 550px;
+                padding: 0 40px;
+            }
+
+            .illustration-content {
+                gap: 40px;
+            }
+
+            .monitor-mockup {
+                right: -120px;
+                width: 360px;
+                height: 240px;
+            }
+
+            .professional-card {
+                width: 280px;
+                height: 340px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .illustration-container {
+                height: auto;
+                min-height: 500px;
+                padding: 40px 30px;
+            }
+
+            .illustration-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .left-process {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .process-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .center-professional {
+                position: relative;
+                width: 100%;
+            }
+
+            .monitor-mockup {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-top: 20px;
+            }
+
+            .right-benefits {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .benefit-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .illustration-container {
+                min-height: 400px;
+                padding: 30px 20px;
+            }
+
+            .left-process {
+                gap: 20px;
+            }
+
+            .process-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 28px;
+            }
+
+            .process-text h4 {
+                font-size: 13px;
+            }
+
+            .process-text p {
+                font-size: 11px;
+            }
+
+            .professional-card {
+                width: 240px;
+                height: 300px;
+                padding: 20px;
+            }
+
+            .monitor-mockup {
+                width: 300px;
+                height: 200px;
+                border-width: 8px;
+                margin-top: 15px;
+            }
+
+            .loan-header {
+                font-size: 14px;
+            }
+
+            .loan-amount {
+                font-size: 28px;
+            }
+
+            .approval-badge {
+                width: 70px;
+                height: 70px;
+                font-size: 35px;
+            }
+
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .benefit-text h4 {
+                font-size: 13px;
+            }
+
+            .benefit-text p {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .illustration-container {
+                min-height: 350px;
+                padding: 20px;
+            }
+
+            .left-process {
+                gap: 15px;
+            }
+
+            .process-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .process-text h4 {
+                font-size: 12px;
+            }
+
+            .process-text p {
+                font-size: 10px;
+            }
+
+            .professional-card {
+                width: 200px;
+                height: 260px;
+                padding: 15px;
+            }
+
+            .professional-image {
+                width: 100px;
+                height: 100px;
+                font-size: 48px;
+            }
+
+            .monitor-mockup {
+                width: 240px;
+                height: 160px;
+                border-width: 6px;
+            }
+
+            .loan-header {
+                font-size: 12px;
+            }
+
+            .loan-amount {
+                font-size: 20px;
+            }
+
+            .approval-badge {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+            }
+
+            .benefit-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="illustration-container">
+        <div class="illustration-content">
+            <!-- Left: Loan Process -->
+            <div class="left-process">
+                <div class="process-item">
+                    <div class="process-icon">📋</div>
+                    <div class="process-text">
+                        <h4>Digital Form</h4>
+                        <p>Quick application</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-icon">✓</div>
+                    <div class="process-text">
+                        <h4>Verification</h4>
+                        <p>Instant verification</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-icon">💰</div>
+                    <div class="process-text">
+                        <h4>Disbursement</h4>
+                        <p>Direct to account</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Professional with Monitor -->
+            <div class="center-professional">
+                <div class="professional-card">
+                    <div class="professional-image">👨‍💼</div>
+                    <div class="professional-info">
+                        <h3>Loan Services</h3>
+                        <p>Fast & Secure</p>
+                    </div>
+                    <div class="dashboard-preview">
+                        <div class="dashboard-item">
+                            <span>Amount</span>
+                            <div class="dashboard-value">₦500K</div>
+                        </div>
+                        <div class="dashboard-item">
+                            <span>Status</span>
+                            <div class="dashboard-value">✓ OK</div>
+                        </div>
+                        <div class="dashboard-item">
+                            <span>Time</span>
+                            <div class="dashboard-value">5 min</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monitor Mockup -->
+                <div class="monitor-mockup">
+                    <div class="monitor-screen">
+                        <div class="loan-header">Loan Request</div>
+                        <div class="loan-amount">₦500,000</div>
+                        <div class="approval-badge">✓</div>
+                        <div class="approval-text">APPROVED</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Disbursement Benefits -->
+            <div class="right-benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-text">
+                        <h4>Instant Approval</h4>
+                        <p>Minutes, not hours</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔒</div>
+                    <div class="benefit-text">
+                        <h4>100% Secure</h4>
+                        <p>Bank-level security</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">💳</div>
+                    <div class="benefit-text">
+                        <h4>Easy Repayment</h4>
+                        <p>Flexible terms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
