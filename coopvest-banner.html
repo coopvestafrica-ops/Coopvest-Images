@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coopvest Africa - CTA Banner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .banner-container {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #0A2342 0%, #0D3A5C 50%, #051829 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animated gradient waves background */
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 160, 23, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 160, 23, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Floating financial icons */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .icon {
+            position: absolute;
+            opacity: 0.08;
+            font-size: 120px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .icon-wallet {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .icon-shield {
+            bottom: 15%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+
+        .icon-chart {
+            top: 50%;
+            right: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Content wrapper */
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            gap: 60px;
+        }
+
+        /* Left side - Visual */
+        .banner-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .visual-placeholder {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(212, 160, 23, 0.1) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(212, 160, 23, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 160, 23, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translate(-100%, -100%) rotate(45deg);
+            }
+            100% {
+                transform: translate(100%, 100%) rotate(45deg);
+            }
+        }
+
+        .visual-icon {
+            font-size: 80px;
+            color: #D4A017;
+            z-index: 1;
+        }
+
+        /* Right side - Text & CTA */
+        .banner-text {
+            flex: 1;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .banner-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 16px 48px;
+            background: linear-gradient(135deg, #D4A017 0%, #E8B923 100%);
+            color: #0A2342;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(212, 160, 23, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 160, 23, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Logo placeholder */
+        .logo-placeholder {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            width: 120px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4A017;
+            font-weight: 700;
+            font-size: 12px;
+            border: 1px solid rgba(212, 160, 23, 0.3);
+            z-index: 3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .banner-container {
+                height: 500px;
+                padding: 0 40px;
+            }
+
+            .banner-content {
+                gap: 40px;
+            }
+
+            .banner-text h1 {
+                font-size: 36px;
+            }
+
+            .banner-text p {
+                font-size: 16px;
+            }
+
+            .visual-placeholder {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner-container {
+                height: auto;
+                min-height: 600px;
+                padding: 60px 30px;
+                flex-direction: column;
+            }
+
+            .banner-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .banner-text h1 {
+                font-size: 28px;
+            }
+
+            .banner-text p {
+                font-size: 14px;
+            }
+
+            .visual-placeholder {
+                width: 250px;
+                height: 250px;
+            }
+
+            .logo-placeholder {
+                top: 20px;
+                right: 20px;
+            }
+
+            .icon {
+                font-size: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner-container {
+                min-height: 500px;
+                padding: 40px 20px;
+            }
+
+            .banner-text h1 {
+                font-size: 22px;
+            }
+
+            .banner-text p {
+                font-size: 13px;
+            }
+
+            .cta-button {
+                padding: 14px 36px;
+                font-size: 14px;
+            }
+
+            .visual-placeholder {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <!-- Animated background elements -->
+        <div class="floating-icons">
+            <div class="icon icon-wallet">💼</div>
+            <div class="icon icon-shield">🛡️</div>
+            <div class="icon icon-chart">📈</div>
+        </div>
+
+        <!-- Logo placeholder -->
+        <div class="logo-placeholder">COOPVEST</div>
+
+        <!-- Main content -->
+        <div class="banner-content">
+            <!-- Left: Visual -->
+            <div class="banner-visual">
+                <div class="visual-placeholder">
+                    <div class="visual-icon">💻</div>
+                </div>
+            </div>
+
+            <!-- Right: Text & CTA -->
+            <div class="banner-text">
+                <h1>Empowering Your Financial Journey</h1>
+                <p>Save, borrow, and grow your wealth securely with Coopvest Africa.</p>
+                <button class="cta-button">Get Started Today</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
