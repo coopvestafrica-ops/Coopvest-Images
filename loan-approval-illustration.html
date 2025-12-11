@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coopvest Africa - Loan Approval Illustration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
+
+        .illustration-container {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #0A2342 0%, #0D3A5C 50%, #051829 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Animated gradient waves background */
+        .illustration-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 160, 23, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(212, 160, 23, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Main content wrapper */
+        .illustration-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1400px;
+            position: relative;
+            z-index: 2;
+            gap: 60px;
+        }
+
+        /* Left section - Loan process icons */
+        .left-process {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            align-items: flex-start;
+        }
+
+        .process-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .process-item:nth-child(1) { animation-delay: 0.1s; }
+        .process-item:nth-child(2) { animation-delay: 0.3s; }
+        .process-item:nth-child(3) { animation-delay: 0.5s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .process-icon {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.2) 0%, rgba(212, 160, 23, 0.08) 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border: 2px solid rgba(212, 160, 23, 0.3);
+            box-shadow: 0 8px 24px rgba(212, 160, 23, 0.12);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .process-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translate(-100%, -100%) rotate(45deg);
+            }
+            100% {
+                transform: translate(100%, 100%) rotate(45deg);
+            }
+        }
+
+        .process-item:hover .process-icon {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(212, 160, 23, 0.2);
+        }
+
+        .process-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .process-text h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.3px;
+        }
+
+        .process-text p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        /* Center section - Professional with phone */
+        .center-professional {
+            flex: 1.1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .professional-image {
+            width: 280px;
+            height: 320px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(212, 160, 23, 0.05) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            box-shadow: 0 20px 60px rgba(10, 35, 66, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 160, 23, 0.2);
+        }
+
+        .professional-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shimmer 4s infinite;
+        }
+
+        /* Phone mockup */
+        .phone-mockup {
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 240px;
+            height: 480px;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(10, 35, 66, 0.25);
+            border: 12px solid #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            animation: slideInRight 0.8s ease-out;
+            position: relative;
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px) translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(-50%);
+            }
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approval-badge {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+            margin-bottom: 20px;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .approval-text {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .approval-text h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0A2342;
+            margin-bottom: 5px;
+        }
+
+        .approval-text p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .loan-amount {
+            font-size: 28px;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .approval-status {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            border-radius: 12px;
+            padding: 12px 20px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #16a34a;
+            width: 100%;
+        }
+
+        /* Right section - Approval benefits */
+        .right-benefits {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: flex-end;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+            flex-direction: row-reverse;
+        }
+
+        .benefit-item:nth-child(1) { animation-delay: 0.2s; }
+        .benefit-item:nth-child(2) { animation-delay: 0.4s; }
+        .benefit-item:nth-child(3) { animation-delay: 0.6s; }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(212, 160, 23, 0.2) 0%, rgba(212, 160, 23, 0.08) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            border: 2px solid rgba(212, 160, 23, 0.3);
+            box-shadow: 0 6px 20px rgba(212, 160, 23, 0.12);
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            text-align: right;
+        }
+
+        .benefit-text h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .benefit-text p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(212, 160, 23, 0.18);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .illustration-container {
+                height: 550px;
+                padding: 0 40px;
+            }
+
+            .illustration-content {
+                gap: 40px;
+            }
+
+            .phone-mockup {
+                right: -80px;
+                width: 200px;
+                height: 400px;
+            }
+
+            .professional-image {
+                width: 240px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .illustration-container {
+                height: auto;
+                min-height: 500px;
+                padding: 40px 30px;
+            }
+
+            .illustration-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .left-process {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 25px;
+            }
+
+            .process-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .center-professional {
+                position: relative;
+                width: 100%;
+            }
+
+            .phone-mockup {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin-top: 20px;
+            }
+
+            .right-benefits {
+                width: 100%;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: center;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .benefit-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .illustration-container {
+                min-height: 400px;
+                padding: 30px 20px;
+            }
+
+            .left-process {
+                gap: 20px;
+            }
+
+            .process-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
+            }
+
+            .process-text h4 {
+                font-size: 13px;
+            }
+
+            .process-text p {
+                font-size: 11px;
+            }
+
+            .professional-image {
+                width: 200px;
+                height: 240px;
+                font-size: 80px;
+            }
+
+            .phone-mockup {
+                width: 160px;
+                height: 320px;
+                border-width: 8px;
+            }
+
+            .approval-badge {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
+            }
+
+            .approval-text h3 {
+                font-size: 16px;
+            }
+
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .benefit-text h4 {
+                font-size: 12px;
+            }
+
+            .benefit-text p {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .illustration-container {
+                min-height: 350px;
+                padding: 20px;
+            }
+
+            .left-process {
+                gap: 15px;
+            }
+
+            .process-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+
+            .process-text h4 {
+                font-size: 12px;
+            }
+
+            .process-text p {
+                font-size: 10px;
+            }
+
+            .professional-image {
+                width: 160px;
+                height: 200px;
+                font-size: 60px;
+            }
+
+            .phone-mockup {
+                width: 140px;
+                height: 280px;
+                border-width: 6px;
+            }
+
+            .approval-badge {
+                width: 70px;
+                height: 70px;
+                font-size: 35px;
+            }
+
+            .approval-text h3 {
+                font-size: 14px;
+            }
+
+            .loan-amount {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="illustration-container">
+        <div class="illustration-content">
+            <!-- Left: Loan Process -->
+            <div class="left-process">
+                <div class="process-item">
+                    <div class="process-icon">📋</div>
+                    <div class="process-text">
+                        <h4>Submit Application</h4>
+                        <p>Quick & easy form</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-icon">✅</div>
+                    <div class="process-text">
+                        <h4>Instant Verification</h4>
+                        <p>Real-time approval</p>
+                    </div>
+                </div>
+
+                <div class="process-item">
+                    <div class="process-icon">💰</div>
+                    <div class="process-text">
+                        <h4>Funds Disbursed</h4>
+                        <p>Direct to your account</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: Professional with Phone -->
+            <div class="center-professional">
+                <div class="professional-image">👨‍💼</div>
+
+                <!-- Phone Mockup -->
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="approval-badge">✓</div>
+                        <div class="approval-text">
+                            <h3>Loan Approved</h3>
+                            <p>Instant Approval</p>
+                        </div>
+                        <div class="loan-amount">₦500,000</div>
+                        <div class="approval-status">✓ Ready to Disburse</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Approval Benefits -->
+            <div class="right-benefits">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-text">
+                        <h4>Lightning Fast</h4>
+                        <p>Minutes, not days</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔒</div>
+                    <div class="benefit-text">
+                        <h4>100% Secure</h4>
+                        <p>Bank-level security</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">📱</div>
+                    <div class="benefit-text">
+                        <h4>Mobile First</h4>
+                        <p>Approve on the go</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
